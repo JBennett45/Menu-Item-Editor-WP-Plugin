@@ -41,7 +41,33 @@ function adminmenu_hidemediaswp_cb() {
     <input type="checkbox" name='jb_api_settings[adminmenu_hidemediaswp]' value="1" <?php checked( 1,  $options['adminmenu_hidemediaswp']); ?> />
 <?php
 }
-
-
+// hide pages menu //
+function adminmenu_hidepagesswp_cb() {
+    $options = get_option( 'jb_api_settings' );
+    if(is_array( $options )) {
+      $options['adminmenu_hidepagesswp'] = empty( $options['adminmenu_hidepagesswp'] ) ? 0 : 1;
+    }
+    else {
+      $options = [];
+      $options['adminmenu_hidepagesswp'] = empty( $options['adminmenu_hidepagesswp'] ) ? 0 : 1;
+    }
+    ?>
+    <input type="checkbox" name='jb_api_settings[adminmenu_hidepagesswp]' value="1" <?php checked( 1,  $options['adminmenu_hidepagesswp']); ?> />
+<?php
+}
+// hide comments menu //
+function adminmenu_hidecommentsswp_cb() {
+    $options = get_option( 'jb_api_settings' );
+    if(is_array( $options )) {
+      $options['adminmenu_hidecommentsswp'] = empty( $options['adminmenu_hidecommentsswp'] ) ? 0 : 1;
+    }
+    else {
+      $options = [];
+      $options['adminmenu_hidecommentsswp'] = empty( $options['adminmenu_hidecommentsswp'] ) ? 0 : 1;
+    }
+    ?>
+    <input type="checkbox" name='jb_api_settings[adminmenu_hidecommentsswp]' value="1" <?php checked( 1,  $options['adminmenu_hidecommentsswp']); ?> />
+<?php
+}
 
 ?>

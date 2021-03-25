@@ -56,6 +56,22 @@ function plugin_fields_api_init(  ) {
     'jbPlugin',
     'jbPlugin_section'
   );
+  // -- pages removal -- //
+  add_settings_field(
+    'adminmenu_hidepagesswp',
+    __( 'Hide Pages Tab', 'menu-item-editor' ),
+    'adminmenu_hidepagesswp_cb',
+    'jbPlugin',
+    'jbPlugin_section'
+  );
+  // -- comments removal -- //
+  add_settings_field(
+    'adminmenu_hidecommentsswp',
+    __( 'Hide Comments Tab', 'menu-item-editor' ),
+    'adminmenu_hidecommentsswp_cb',
+    'jbPlugin',
+    'jbPlugin_section'
+  );
 }
 // description //
 function jb_api_settings_section_callback(  ) {
@@ -71,7 +87,12 @@ function remove_wp_postwp_tab() {
 function remove_wp_mediawp_tab() {
   remove_menu_page( 'upload.php' );
 }
-
+function remove_wp_pageswp_tab() {
+  remove_menu_page( 'edit.php?post_type=page' );
+}
+function remove_wp_commentsswp_tab() {
+  remove_menu_page( 'edit-comments.php' );  
+}
 // the above functions are managed and called in hide-menu-callbacks based on user input //
 
 // show panel //
