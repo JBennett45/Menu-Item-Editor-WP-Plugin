@@ -27,11 +27,11 @@ function plugin_fields_api_init(  ) {
   // section //
   add_settings_section(
     'jbPlugin_section', // ID //
-    __( 'Remove WordPress default menu items', 'menu-item-editor' ), // title //
+    __( '', 'menu-item-editor' ), // title //
     'jb_api_settings_section_callback', // callback //
     'jbPlugin' // page group name //
   );
-  // checkboxes //
+  // Fields //
   // -- dashboard 'updates' sub menu removal -- //
   add_settings_field(
     'adminmenu_hideupdates',
@@ -72,10 +72,50 @@ function plugin_fields_api_init(  ) {
     'jbPlugin',
     'jbPlugin_section'
   );
+  // -- appearence removal -- //
+  add_settings_field(
+    'adminmenu_hideappswp',
+    __( 'Hide Appearence Tab', 'menu-item-editor' ),
+    'adminmenu_hideappswp_cb',
+    'jbPlugin',
+    'jbPlugin_section'
+  );
+  // -- plugin removal -- //
+  add_settings_field(
+    'adminmenu_hidepluginswp',
+    __( 'Hide Plugins Tab', 'menu-item-editor' ),
+    'adminmenu_hidepluginswp_cb',
+    'jbPlugin',
+    'jbPlugin_section'
+  );
+  // -- user removal -- //
+  add_settings_field(
+    'adminmenu_hideuserswp',
+    __( 'Hide User Tab', 'menu-item-editor' ),
+    'adminmenu_hideuserswp_cb',
+    'jbPlugin',
+    'jbPlugin_section'
+  );
+  // -- tools removal -- //
+  add_settings_field(
+    'adminmenu_hidetoolswp',
+    __( 'Hide Tools Tab', 'menu-item-editor' ),
+    'adminmenu_hidetoolswp_cb',
+    'jbPlugin',
+    'jbPlugin_section'
+  );
+  // -- settings removal -- //
+  add_settings_field(
+    'adminmenu_hidesettingswp',
+    __( 'Hide Settings Tab', 'menu-item-editor' ),
+    'adminmenu_hidesettingswp_cb',
+    'jbPlugin',
+    'jbPlugin_section'
+  );
 }
 // description //
 function jb_api_settings_section_callback(  ) {
-  echo __( 'Control the menu items that are shown or hidden, ticking an item below will hide that tab from the admin menu.', 'menu-item-editor' );
+  echo __( 'Control which menu items are shown in the admin menu. By ticking an item below will hide that tab from the admin menu.', 'menu-item-editor' );
 }
 // removal of admin panels //
 function remove_wp_updates_tab() {
@@ -91,22 +131,42 @@ function remove_wp_pageswp_tab() {
   remove_menu_page( 'edit.php?post_type=page' );
 }
 function remove_wp_commentsswp_tab() {
-  remove_menu_page( 'edit-comments.php' );  
+  remove_menu_page( 'edit-comments.php' );
+}
+function remove_wp_appear_tab() {
+  remove_menu_page( 'themes.php' );
+}
+function remove_wp_pluginwp_tab() {
+  remove_menu_page( 'plugins.php' );
+}
+function remove_wp_userwp_tab() {
+  remove_menu_page( 'users.php' );
+}
+function remove_wp_toolswp_tab() {
+  remove_menu_page( 'tools.php' );
+}
+function remove_wp_settingsswp_tab() {
+  remove_menu_page( 'options-general.php' );
 }
 // the above functions are managed and called in hide-menu-callbacks based on user input //
-
 // show panel //
 function adminEditor_welcomepanel(  ) { ?>
-  <form action='options.php' method='post'>
-    <?php
-      settings_fields( 'jbPlugin' );
-      do_settings_sections( 'jbPlugin' );
-      submit_button();
-    ?>
-    <?php
-      $options = get_option( 'jb_api_settings' );
-      var_dump($options);
-    ?>
-  </form>
+
+  <div class="mie_admin_hdr">
+    <h1>WordPress Menu Item Editor</h1>
+  </div>
+  <div class="mie_admin_wrap">
+    <form action='options.php' method='post'>
+      <?php
+        settings_fields( 'jbPlugin' );
+        do_settings_sections( 'jbPlugin' );
+        submit_button();
+      ?>
+      <?php
+        $options = get_option( 'jb_api_settings' );
+        var_dump($options);
+      ?>
+    </form>
+  </div>
   <?php
 }
