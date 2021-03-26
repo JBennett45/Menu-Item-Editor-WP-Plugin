@@ -28,7 +28,7 @@ function plugin_fields_api_init(  ) {
   add_settings_section(
     'jbPlugin_section', // ID //
     __( '', 'menu-item-editor' ), // title //
-    'jb_api_settings_section_callback', // callback //
+    'jb_api_settings_section_callback', // description callback //
     'jbPlugin' // page group name //
   );
   // Fields //
