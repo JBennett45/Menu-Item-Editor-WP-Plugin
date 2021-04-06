@@ -163,8 +163,8 @@ function adminEditor_welcomepanel(  ) { ?>
         submit_button();
       ?>
       <?php
-        $options = get_option( 'jb_api_settings' );
-        var_dump($options);
+        // include hide callbacks //
+        include( plugin_dir_path( __FILE__ ) . 'hide-menu-outputuser.php');
       ?>
     </form>
   </div>

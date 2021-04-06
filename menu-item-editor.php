@@ -1,12 +1,5 @@
 <?php
-
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
  *
  * @link              https://www.jbdev.co.uk
  * @since             1.0.0
@@ -14,8 +7,8 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Menu Item Editor
- * Plugin URI:        https://www.jbdev.co.uk
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Plugin URI:        
+ * Description:       Within the Menu Editor tab you will be able to hide each of the default WordPress menu items to your liking.
  * Version:           1.0.0
  * Author:            Jon Bennett
  * Author URI:        https://www.jbdev.co.uk
